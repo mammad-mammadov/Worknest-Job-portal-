@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ job.title }} - WorkNest</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar{
+            background-color: #2563eb;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .navbar h1{
+            margin: 0;
+            font-size: 38px;
+        }
+
+        .job-container{
+            width: 60%;
+            margin: 50px auto;
+            background-color: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .job-title{
+            color: #2563eb;
+            margin-bottom: 25px;
+            font-size: 38px;
+        }
+
+        .info{
+            margin-bottom: 18px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .button-group{
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .apply-btn{
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .apply-btn:hover{
+            background-color: #1e4fd1;
+        }
+
+        .save-btn{
+            background-color: #111827;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .save-btn:hover{
+            background-color: #1f2937;
+        }
+
+        .back-link{
+            display: inline-block;
+            margin-top: 30px;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: bold;
+            font-size: 17px;
+        }
+#darkModeToggle{
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    background: #2563eb;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.dark-mode{
+    background:#111827 !important;
+    color:white !important;
+}
+
+.dark-mode .navbar{
+    background:#0f172a !important;
+}
+
+.dark-mode .job-container,
+.dark-mode .apply-container,
+.dark-mode .post-container,
+.dark-mode .register-box,
+.dark-mode .login-box,
+.dark-mode .card,
+.dark-mode .container{
+    background:#1f2937 !important;
+    color:white !important;
+}
+
+.dark-mode p,
+.dark-mode label,
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode .info{
+    color:white !important;
+}
+
+.dark-mode input,
+.dark-mode textarea{
+    background:#374151 !important;
+    color:white !important;
+    border:1px solid #555 !important;
+}
+
+.dark-mode a{
+    color:#93c5fd !important;
+}
+    </style>
+
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>WorkNest</h1>
+    </div>
+
+    <div class="job-container">
+
+        <h1 class="job-title">
+            {{ job.title }}
+        </h1>
+
+        <p class="info">
+            <strong>Company:</strong>
+            {{ job.company }}
+        </p>
+
+        <p class="info">
+            <strong>Salary:</strong>
+            {{ job.salary }}
+        </p>
+
+        <p class="info">
+            <strong>City:</strong>
+            {{ job.city }}
+        </p>
+
+        <div class="button-group">
+
+            <a href="{% url 'apply_job' job.id %}">
+                <button class="apply-btn">
+                    Apply Now
+                </button>
+            </a>
+
+            <a href="/save-job/{{ job.id }}/">
+                <button class="save-btn">
+                    ❤️ Save Job
+                </button>
+            </a>
+
+        </div>
+
+        <a href="/" class="back-link">
+            ← Back to Jobs
+        </a>
+
+    </div>
+<button id="darkModeToggle">🌙</button>
+
+<script>
+    const darkModeToggle = document.getElementById("darkModeToggle");
+
+    if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+        darkModeToggle.textContent = "☀️";
+    }
+
+    darkModeToggle.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("darkMode", "enabled");
+            darkModeToggle.textContent = "☀️";
+        } else {
+            localStorage.setItem("darkMode", "disabled");
+            darkModeToggle.textContent = "🌙";
+        }
+    });
+</script>
+</body>
+</html>

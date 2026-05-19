@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Saved Jobs</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f6f9;
+            padding:40px;
+        }
+
+        h1{
+            color:#2563eb;
+        }
+
+        .card{
+            background:white;
+            padding:20px;
+            margin-top:20px;
+            border-radius:15px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        a{
+            text-decoration:none;
+            color:#2563eb;
+            font-weight:bold;
+        }
+        #darkModeToggle{
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    background: #2563eb;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.dark-mode{
+    background:#111827 !important;
+    color:white !important;
+}
+
+.dark-mode .navbar{
+    background:#0f172a !important;
+}
+
+.dark-mode .job-container,
+.dark-mode .apply-container,
+.dark-mode .post-container,
+.dark-mode .register-box,
+.dark-mode .login-box,
+.dark-mode .card,
+.dark-mode .container{
+    background:#1f2937 !important;
+    color:white !important;
+}
+
+.dark-mode p,
+.dark-mode label,
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode .info{
+    color:white !important;
+}
+
+.dark-mode input,
+.dark-mode textarea{
+    background:#374151 !important;
+    color:white !important;
+    border:1px solid #555 !important;
+}
+
+.dark-mode a{
+    color:#93c5fd !important;
+}
+    </style>
+</head>
+
+<body>
+
+    <h1>Saved Jobs</h1>
+
+    {% for saved in saved_jobs %}
+
+        <div class="card">
+
+            <h2>{{ saved.job.title }}</h2>
+
+            <p>
+                <strong>Company:</strong>
+                {{ saved.job.company }}
+            </p>
+
+            <p>
+                <strong>City:</strong>
+                {{ saved.job.city }}
+            </p>
+
+            <a href="/job/{{ saved.job.id }}/">
+                View Job
+            </a>
+
+        </div>
+
+    {% empty %}
+
+        <p>No saved jobs yet.</p>
+
+    {% endfor %}
+<button id="darkModeToggle">🌙</button>
+
+<script>
+    const darkModeToggle = document.getElementById("darkModeToggle");
+
+    if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+        darkModeToggle.textContent = "☀️";
+    }
+
+    darkModeToggle.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("darkMode", "enabled");
+            darkModeToggle.textContent = "☀️";
+        } else {
+            localStorage.setItem("darkMode", "disabled");
+            darkModeToggle.textContent = "🌙";
+        }
+    });
+</script>
+</body>
+</html>

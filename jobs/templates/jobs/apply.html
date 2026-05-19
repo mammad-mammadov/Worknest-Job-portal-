@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apply - WorkNest</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .apply-container{
+            background: white;
+            width: 520px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        h1{
+            color: #2563eb;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label{
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"]{
+            margin-bottom: 25px;
+        }
+
+        textarea{
+            width: 100%;
+            height: 140px;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #ccc;
+            resize: none;
+            font-size: 15px;
+            box-sizing: border-box;
+            margin-bottom: 25px;
+        }
+
+        button{
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background-color: #2563eb;
+            color: white;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #1d4ed8;
+        }
+
+        .back{
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: bold;
+        }
+        .custom-file-upload{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.upload-btn{
+    background-color: #2563eb;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.upload-btn:hover{
+    background-color: #1d4ed8;
+}
+
+#cv-upload{
+    display: none;
+}
+
+#file-name{
+    color: #666;
+    font-size: 15px;
+}
+#darkModeToggle{
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    background: #2563eb;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.dark-mode{
+    background:#111827 !important;
+    color:white !important;
+}
+
+.dark-mode .navbar{
+    background:#0f172a !important;
+}
+
+.dark-mode .job-container,
+.dark-mode .apply-container,
+.dark-mode .post-container,
+.dark-mode .register-box,
+.dark-mode .login-box,
+.dark-mode .card,
+.dark-mode .container{
+    background:#1f2937 !important;
+    color:white !important;
+}
+
+.dark-mode p,
+.dark-mode label,
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode .info{
+    color:white !important;
+}
+
+.dark-mode input,
+.dark-mode textarea{
+    background:#374151 !important;
+    color:white !important;
+    border:1px solid #555 !important;
+}
+
+.dark-mode a{
+    color:#93c5fd !important;
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="apply-container">
+        <h1>Apply for {{ job.title }}</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <label>Upload Your CV</label>
+           <div class="custom-file-upload">
+    <label for="cv-upload" class="upload-btn">
+        Upload CV
+    </label>
+
+    <span id="file-name">No file selected</span>
+
+    <input type="file" name="cv" id="cv-upload">
+</div>
+            
+
+            <label>Motivation Letter</label>
+            {{ form.motivation_letter }}
+
+            <button type="submit">Submit Application</button>
+        </form>
+
+        <a href="{% url 'job_detail' job.id %}" class="back">
+            ← Back to Job Details
+        </a>
+    </div>
+<script>
+    const fileInput = document.getElementById("cv-upload");
+    const fileName = document.getElementById("file-name");
+
+    fileInput.addEventListener("change", function() {
+        if(fileInput.files.length > 0){
+            fileName.textContent = fileInput.files[0].name;
+        } else {
+            fileName.textContent = "No file selected";
+        }
+    });
+</script>
+<button id="darkModeToggle">🌙</button>
+
+<script>
+    const darkModeToggle = document.getElementById("darkModeToggle");
+
+    if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+        darkModeToggle.textContent = "☀️";
+    }
+
+    darkModeToggle.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("darkMode", "enabled");
+            darkModeToggle.textContent = "☀️";
+        } else {
+            localStorage.setItem("darkMode", "disabled");
+            darkModeToggle.textContent = "🌙";
+        }
+    });
+</script>
+</body>
+</html>
