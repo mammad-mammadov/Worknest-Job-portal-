@@ -209,6 +209,24 @@
             background: #1f2937;
             color: white;
         }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 18px 25px;
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .nav-right {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .container {
+                width: 92%;
+            }
+        }
     </style>
 </head>
 
@@ -244,21 +262,13 @@
     <div class="container">
         <input type="text" id="searchInput" placeholder="Search jobs...">
 
-       <select id="cityFilter">
+        <select id="cityFilter">
+            <option value="all">All Cities</option>
 
-    <option value="all">
-        All Cities
-    </option>
-
-    {% for job in jobs %}
-
-        <option value="{{ job.city|lower }}">
-            {{ job.city }}
-        </option>
-
-    {% endfor %}
-
-</select>
+            {% for city in cities %}
+                <option value="{{ city|lower }}">{{ city }}</option>
+            {% endfor %}
+        </select>
 
         <p id="jobCount">Available Jobs: {{ jobs|length }}</p>
         <p id="noResults">No jobs found.</p>
@@ -270,9 +280,11 @@
                         <h2 class="job-title">{{ job.title }}</h2>
                         <p><strong>Company:</strong> {{ job.company }}</p>
                         <span class="badge">{{ job.salary }}</span>
-                        <span class="badge">{{ job.city }}</span>
+                        <span class="badge city-badge">{{ job.city }}</span>
                     </div>
                 </a>
+            {% empty %}
+                <p>No jobs available.</p>
             {% endfor %}
         </div>
     </div>
@@ -303,11 +315,7 @@
 
             jobCards.forEach(card => {
                 const text = card.innerText.toLowerCase();
-                const cityBadges = card.querySelectorAll(".badge");
-
-                const city = cityBadges.length > 1
-                    ? cityBadges[1].innerText.toLowerCase()
-                    : "";
+                const city = card.querySelector(".city-badge").innerText.toLowerCase();
 
                 const matchesSearch = text.includes(searchValue);
                 const matchesCity = selectedCity === "all" || city === selectedCity;

@@ -27,3 +27,9 @@ class ApplicationAdmin(admin.ModelAdmin):
 
 admin.site.register(Job, JobAdmin)
 admin.site.register(Application, ApplicationAdmin)
+
+
+
+admin.site.site_header = "WorkNest Admin Panel"
+admin.site.site_title = "WorkNest Admin"
+admin.site.index_title = "Job Management Dashboard"

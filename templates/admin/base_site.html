@@ -1,0 +1,52 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block title %}WorkNest Admin{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">WorkNest Admin Panel</a>
+</h1>
+{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'admin/custom_admin.css' %}">
+<script>
+    (function() {
+        if (localStorage.getItem("admin-theme") === "light") {
+            document.documentElement.classList.add("light-mode");
+            document.addEventListener("DOMContentLoaded", function() {
+                document.body.classList.add("light-mode");
+            });
+        }
+    })();
+</script>
+{% endblock %}
+
+{% block footer %}
+{{ block.super }}
+
+<button id="theme-toggle">☀️</button>
+
+<script>
+    const toggleBtn = document.getElementById("theme-toggle");
+
+    if (localStorage.getItem("admin-theme") === "light") {
+        toggleBtn.innerHTML = "🌙";
+    }
+
+    toggleBtn.addEventListener("click", function () {
+        document.body.classList.toggle("light-mode");
+        document.documentElement.classList.toggle("light-mode");
+
+        if (document.body.classList.contains("light-mode")) {
+            localStorage.setItem("admin-theme", "light");
+            toggleBtn.innerHTML = "🌙";
+        } else {
+            localStorage.setItem("admin-theme", "dark");
+            toggleBtn.innerHTML = "☀️";
+        }
+    });
+</script>
+{% endblock %}

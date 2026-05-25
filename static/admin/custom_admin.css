@@ -1,0 +1,445 @@
+/* =========================
+   FLASH PREVENTION
+========================= */
+
+html.light-mode,
+html.light-mode body {
+    background: #f1f5f9 !important;
+}
+
+/* =========================
+   DARK MODE - DEFAULT
+========================= */
+
+body {
+    background: #0f172a !important;
+    color: #e5e7eb !important;
+    font-family: Arial, sans-serif;
+}
+
+#header {
+    background: linear-gradient(90deg, #2563eb, #1e40af) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+}
+
+#branding h1,
+#branding h1 a,
+#user-tools,
+#user-tools a,
+#user-tools strong {
+    color: white !important;
+}
+
+#branding h1 a {
+    font-size: 30px !important;
+    font-weight: bold !important;
+}
+
+div.breadcrumbs {
+    background: #1e293b !important;
+    color: white !important;
+}
+
+#content {
+    background: #0f172a !important;
+}
+
+#content h1 {
+    color: white !important;
+    font-size: 36px !important;
+}
+
+.module,
+fieldset.module,
+#recent-actions-module,
+#changelist,
+#changelist-filter {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35) !important;
+}
+
+.module h2,
+.module caption,
+.inline-group h2,
+#recent-actions-module h2,
+#changelist-filter h2 {
+    background: linear-gradient(90deg, #2563eb, #3b82f6) !important;
+    color: white !important;
+    padding: 15px !important;
+    font-weight: bold !important;
+}
+
+body:not(.light-mode) table,
+body:not(.light-mode) tbody,
+body:not(.light-mode) tr,
+body:not(.light-mode) td,
+body:not(.light-mode) th {
+    background: #1e293b !important;
+    color: #e5e7eb !important;
+    border-bottom: 1px solid #334155 !important;
+}
+
+body:not(.light-mode) a {
+    color: #93c5fd !important;
+    text-decoration: none !important;
+}
+
+body:not(.light-mode) a:hover {
+    color: white !important;
+}
+
+body:not(.light-mode) input,
+body:not(.light-mode) textarea,
+body:not(.light-mode) select {
+    background: #0f172a !important;
+    color: white !important;
+    border: 1px solid #3b82f6 !important;
+    border-radius: 10px !important;
+    padding: 10px !important;
+}
+
+.button,
+input[type="submit"],
+input[type="button"],
+.submit-row input,
+.object-tools a {
+    background: linear-gradient(90deg, #2563eb, #1d4ed8) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 10px 18px !important;
+    font-weight: bold !important;
+}
+
+body:not(.light-mode) .submit-row,
+body:not(.light-mode) #toolbar,
+body:not(.light-mode) .actions {
+    background: #1e293b !important;
+    border-color: #334155 !important;
+}
+
+/* SIDEBAR DARK */
+
+#nav-sidebar {
+    background: #0f172a !important;
+    border-right: 1px solid #1e293b !important;
+    padding: 15px !important;
+}
+
+#nav-sidebar .module {
+    background: #1e293b !important;
+    border-radius: 18px !important;
+}
+
+body:not(.light-mode) #nav-sidebar td,
+body:not(.light-mode) #nav-sidebar th,
+body:not(.light-mode) #nav-sidebar tr {
+    background: #1e293b !important;
+    color: #e5e7eb !important;
+}
+
+body:not(.light-mode) #nav-sidebar td:hover {
+    background: #334155 !important;
+}
+
+body:not(.light-mode) #nav-sidebar a {
+    color: #dbeafe !important;
+}
+
+body:not(.light-mode) #nav-sidebar .addlink {
+    color: #86efac !important;
+}
+
+#nav-sidebar tr.current-model,
+#nav-sidebar tr.current-model td,
+#nav-sidebar tr.current-model th {
+    background: #2563eb !important;
+}
+
+#nav-sidebar tr.current-model a,
+#nav-sidebar tr.current-model .addlink {
+    color: white !important;
+}
+
+body:not(.light-mode) #nav-filter {
+    background: #1e293b !important;
+    color: white !important;
+    border: 1px solid #334155 !important;
+    border-radius: 12px !important;
+}
+
+/* CHANGE LIST DARK */
+
+.change-list #content {
+    padding: 30px 40px !important;
+}
+
+body:not(.light-mode) .change-list #result_list th,
+body:not(.light-mode) .change-list #result_list td {
+    background: #1e293b !important;
+    color: #e5e7eb !important;
+}
+
+/* TOGGLE BUTTON */
+
+#theme-toggle {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(37,99,235,0.45);
+    z-index: 9999;
+    transition: transform 0.2s;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+body.light-mode,
+html.light-mode body {
+    background: #f1f5f9 !important;
+    color: #111827 !important;
+}
+
+body.light-mode #header,
+html.light-mode body #header {
+    background: linear-gradient(90deg, #2563eb, #1e40af) !important;
+}
+
+body.light-mode #content,
+html.light-mode body #content {
+    background: #f1f5f9 !important;
+}
+
+body.light-mode #content h1,
+html.light-mode body #content h1 {
+    color: #111827 !important;
+}
+
+body.light-mode label,
+html.light-mode body label,
+body.light-mode p,
+html.light-mode body p {
+    color: #111827 !important;
+}
+
+body.light-mode div.breadcrumbs,
+html.light-mode body div.breadcrumbs {
+    background: #e2e8f0 !important;
+    color: #1e293b !important;
+}
+
+body.light-mode .module,
+html.light-mode body .module,
+body.light-mode fieldset.module,
+html.light-mode body fieldset.module,
+body.light-mode #recent-actions-module,
+html.light-mode body #recent-actions-module,
+body.light-mode #changelist,
+html.light-mode body #changelist,
+body.light-mode #changelist-filter,
+html.light-mode body #changelist-filter {
+    background: white !important;
+    border: 1px solid #dbe2ea !important;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.08) !important;
+}
+
+body.light-mode .module h2,
+html.light-mode body .module h2,
+body.light-mode .module caption,
+html.light-mode body .module caption,
+body.light-mode .inline-group h2,
+html.light-mode body .inline-group h2,
+body.light-mode #recent-actions-module h2,
+html.light-mode body #recent-actions-module h2,
+body.light-mode #changelist-filter h2,
+html.light-mode body #changelist-filter h2 {
+    background: linear-gradient(90deg, #2563eb, #3b82f6) !important;
+    color: white !important;
+}
+
+body.light-mode table,
+html.light-mode body table,
+body.light-mode tbody,
+html.light-mode body tbody,
+body.light-mode tr,
+html.light-mode body tr,
+body.light-mode td,
+html.light-mode body td,
+body.light-mode th,
+html.light-mode body th {
+    background: white !important;
+    color: #111827 !important;
+    border-bottom: 1px solid #e5e7eb !important;
+}
+
+body.light-mode input,
+html.light-mode body input,
+body.light-mode textarea,
+html.light-mode body textarea,
+body.light-mode select,
+html.light-mode body select {
+    background: white !important;
+    color: #111827 !important;
+    border: 1px solid #cbd5e1 !important;
+}
+
+body.light-mode a,
+html.light-mode body a {
+    color: #2563eb !important;
+    text-decoration: none !important;
+}
+
+body.light-mode a:hover,
+html.light-mode body a:hover {
+    color: #1d4ed8 !important;
+}
+
+body.light-mode #user-tools,
+html.light-mode body #user-tools,
+body.light-mode #user-tools a,
+html.light-mode body #user-tools a,
+body.light-mode #user-tools strong,
+html.light-mode body #user-tools strong,
+body.light-mode #branding h1,
+html.light-mode body #branding h1,
+body.light-mode #branding h1 a,
+html.light-mode body #branding h1 a {
+    color: white !important;
+}
+
+body.light-mode .submit-row,
+html.light-mode body .submit-row,
+body.light-mode #toolbar,
+html.light-mode body #toolbar,
+body.light-mode .actions,
+html.light-mode body .actions {
+    background: #e2e8f0 !important;
+    border-color: #cbd5e1 !important;
+}
+
+/* LIGHT SIDEBAR */
+
+body.light-mode #nav-sidebar,
+html.light-mode body #nav-sidebar {
+    background: #f1f5f9 !important;
+    border-right: 1px solid #dbe2ea !important;
+}
+
+body.light-mode #nav-sidebar .module,
+html.light-mode body #nav-sidebar .module {
+    background: white !important;
+    border: 1px solid #dbe2ea !important;
+}
+
+body.light-mode #nav-sidebar td,
+html.light-mode body #nav-sidebar td,
+body.light-mode #nav-sidebar th,
+html.light-mode body #nav-sidebar th,
+body.light-mode #nav-sidebar tr,
+html.light-mode body #nav-sidebar tr {
+    background: white !important;
+    color: #111827 !important;
+    border-bottom: 1px solid #e5e7eb !important;
+}
+
+body.light-mode #nav-sidebar a,
+html.light-mode body #nav-sidebar a {
+    color: #111827 !important;
+}
+
+body.light-mode #nav-sidebar .addlink,
+html.light-mode body #nav-sidebar .addlink {
+    color: #16a34a !important;
+}
+
+body.light-mode #nav-sidebar td:hover,
+html.light-mode body #nav-sidebar td:hover {
+    background: #eef2ff !important;
+}
+
+body.light-mode #nav-sidebar tr.current-model,
+html.light-mode body #nav-sidebar tr.current-model,
+body.light-mode #nav-sidebar tr.current-model td,
+html.light-mode body #nav-sidebar tr.current-model td,
+body.light-mode #nav-sidebar tr.current-model th,
+html.light-mode body #nav-sidebar tr.current-model th {
+    background: #2563eb !important;
+}
+
+body.light-mode #nav-sidebar tr.current-model a,
+html.light-mode body #nav-sidebar tr.current-model a,
+body.light-mode #nav-sidebar tr.current-model .addlink,
+html.light-mode body #nav-sidebar tr.current-model .addlink {
+    color: white !important;
+}
+
+body.light-mode #nav-filter,
+html.light-mode body #nav-filter {
+    background: white !important;
+    color: #111827 !important;
+    border: 1px solid #cbd5e1 !important;
+}
+
+body.light-mode .change-list #result_list th,
+html.light-mode body .change-list #result_list th,
+body.light-mode .change-list #result_list td,
+html.light-mode body .change-list #result_list td {
+    background: white !important;
+    color: #111827 !important;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 10px;
+}
+body:not(.light-mode) .paginator,
+body:not(.light-mode) nav.paginator,
+body:not(.light-mode) p.paginator {
+    background: #1e293b !important;
+    color: #e5e7eb !important;
+    border-top: 1px solid #334155 !important;
+}
+body:not(.light-mode) #recent-actions-module ul,
+body:not(.light-mode) #recent-actions-module li,
+body:not(.light-mode) #recent-actions-module p,
+body:not(.light-mode) .actionlist,
+body:not(.light-mode) .actionlist li {
+    background: #1e293b !important;
+    color: #e5e7eb !important;
+    border-color: #334155 !important;
+}
+
+body:not(.light-mode) #recent-actions-module .caption {
+    color: #94a3b8 !important;
+}
+body:not(.light-mode) #content-related,
+body:not(.light-mode) #content-related .module,
+body:not(.light-mode) #content-related ul,
+body:not(.light-mode) #content-related li,
+body:not(.light-mode) #content-related p {
+    background: #1e293b !important;
+    color: #e5e7eb !important;
+    border-color: #334155 !important;
+}

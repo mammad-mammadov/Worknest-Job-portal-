@@ -1,17 +1,32 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
-from .models import Job, Application
+
+from .models import Job, Application, SavedJob
 from .forms import RegisterForm, ApplicationForm, JobForm
-from .models import SavedJob
+
 
 def job_list(request):
     jobs = Job.objects.filter(status='approved')
-    return render(request, 'jobs/job_list.html', {'jobs': jobs})
+
+    cities = (
+        Job.objects
+        .filter(status='approved')
+        .exclude(city__isnull=True)
+        .exclude(city__exact='')
+        .values_list('city', flat=True)
+        .distinct()
+        .order_by('city')
+    )
+
+    return render(request, 'jobs/job_list.html', {
+        'jobs': jobs,
+        'cities': cities,
+    })
 
 
 def job_detail(request, job_id):
-    job = Job.objects.get(id=job_id)
+    job = get_object_or_404(Job, id=job_id)
     return render(request, 'jobs/job_detail.html', {'job': job})
 
 
@@ -31,7 +46,7 @@ def register(request):
 
 @login_required
 def apply_job(request, job_id):
-    job = Job.objects.get(id=job_id)
+    job = get_object_or_404(Job, id=job_id)
 
     if request.method == "POST":
         form = ApplicationForm(request.POST, request.FILES)
@@ -77,9 +92,11 @@ def company_dashboard(request):
         'jobs': jobs,
         'applications': applications
     })
+
+
 @login_required
 def save_job(request, job_id):
-    job = Job.objects.get(id=job_id)
+    job = get_object_or_404(Job, id=job_id)
 
     already_saved = SavedJob.objects.filter(
         user=request.user,
@@ -93,6 +110,8 @@ def save_job(request, job_id):
         )
 
     return redirect('job_detail', job_id=job.id)
+
+
 @login_required
 def saved_jobs(request):
     saved_jobs = SavedJob.objects.filter(user=request.user)
